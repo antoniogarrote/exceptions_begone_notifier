@@ -88,11 +88,9 @@ module ExceptionsBegone
 
 
        (ConnectionConfigurator::PROJECT_OPTIONS + ConnectionConfigurator::SERVER_OPTIONS).each do |option|
-         puts "OPTION:#{option} -> #{@project_conf[option]}"
          @project_conf[option] = @project_conf[option] || ConnectionConfigurator::DEFAULTS.dup[option]
          value = @project_conf[option]
          method = (option.to_s + "=").to_sym
-         puts "WRITING: #{method}, #{value}"
          self.send(method, value)
        end
      end
